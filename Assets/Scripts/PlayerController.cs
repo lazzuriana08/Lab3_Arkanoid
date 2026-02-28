@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 8f;
-    public float minX = -7.5f;
-    public float maxX = 7.5f;
+    public float minX = -9f;
+    public float maxX = 9f;
 
     private float defaultScaleX;
     private Coroutine sizeRoutine;

@@ -26,9 +26,9 @@ public class EndSceneController : MonoBehaviour
             alignment = TextAnchor.MiddleCenter
         };
 
-        string title = GameSession.DidWin ? "VOCÊ VENCEU!" : "FIM DE JOGO";
+        string title = GameSession.DidWin ? "VOCÊ VENCEU!" : "";
         GUI.Label(new Rect(0, 110, Screen.width, 70), title, titleStyle);
-        GUI.Label(new Rect(0, 210, Screen.width, 50), $"Pontuação Final: {GameSession.Score}", textStyle);
+        GUI.Label(new Rect(0, 265, Screen.width, 50), $"Pontuação Final: {GameSession.Score}", textStyle);
 
         Rect buttonRect = new Rect((Screen.width - 260) / 2f, 310, 260, 50);
         if (GUI.Button(buttonRect, "Reiniciar"))

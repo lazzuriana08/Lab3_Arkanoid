@@ -31,7 +31,6 @@ public class StartSceneController : MonoBehaviour
             alignment = TextAnchor.MiddleCenter
         };
 
-        GUI.Label(new Rect(0, 80, Screen.width, 60), "ARKANOID ESPACIAL", titleStyle);
         GUI.Label(new Rect(0, 170, Screen.width, 120), "Destrua todos os blocos coloridos com a bola.\nColete power-ups e sobreviva com suas vidas.", textStyle);
 
         Rect buttonRect = new Rect((Screen.width - 220) / 2f, 320, 220, 50);

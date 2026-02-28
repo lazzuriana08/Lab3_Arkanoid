@@ -20,10 +20,6 @@ public class WallBounce : MonoBehaviour
         TryBounce(collision);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        TryBounce(collision);
-    }
 
     private void TryBounce(Collision2D collision)
     {

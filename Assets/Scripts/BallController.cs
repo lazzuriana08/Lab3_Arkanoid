@@ -62,27 +62,17 @@ public class BallController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isLaunched)
+        if (!isLaunched) return;
+
+        Vector2 dir = rb.linearVelocity.normalized;
+
+        if (Mathf.Abs(dir.y) < minVerticalDirection)
         {
-            return;
+            dir.y = Mathf.Sign(dir.y == 0 ? 1 : dir.y) * minVerticalDirection;
+            dir.Normalize();
         }
 
-        Vector2 velocity = rb.linearVelocity;
-        if (velocity.sqrMagnitude < 0.0001f)
-        {
-            rb.linearVelocity = lastMoveDirection.normalized * currentSpeed;
-            return;
-        }
-
-        Vector2 normalized = velocity.normalized;
-        if (Mathf.Abs(normalized.y) < minVerticalDirection)
-        {
-            normalized.y = Mathf.Sign(normalized.y == 0 ? 1f : normalized.y) * minVerticalDirection;
-            normalized = normalized.normalized;
-        }
-
-        lastMoveDirection = normalized;
-        rb.linearVelocity = normalized * currentSpeed;
+        rb.linearVelocity = dir * currentSpeed;
     }
 
     void Launch()

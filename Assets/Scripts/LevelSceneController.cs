@@ -203,9 +203,9 @@ public class LevelSceneController : MonoBehaviour
 
     private void CreateBoundaries()
     {
-        CreateWall("TopWall", new Vector2(0f, 5.15f), new Vector2(17.5f, 0.4f));
-        CreateWall("LeftWall", new Vector2(-8.55f, 0f), new Vector2(0.4f, 10.5f));
-        CreateWall("RightWall", new Vector2(8.55f, 0f), new Vector2(0.4f, 10.5f));
+        CreateWall("TopWall", new Vector2(0f, 3.1f), new Vector2(16.3f, 0.4f));
+        CreateWall("LeftWall", new Vector2(-9f, 0f), new Vector2(0.4f, 10.5f));
+        CreateWall("RightWall", new Vector2(9.2f, 0f), new Vector2(0.4f, 10.5f));
     }
 
     private void SpawnBlocksForLevel()
@@ -213,7 +213,7 @@ public class LevelSceneController : MonoBehaviour
         int rows = levelIndex == 1 ? 4 : 4;
         int cols = levelIndex == 1 ? 8 : 8;
         float startX = -5.6f;
-        float startY = 3.8f;
+        float startY = 2.5f;
         float stepX = 1.6f;
         float stepY = 0.65f;
 
@@ -248,6 +248,8 @@ public class LevelSceneController : MonoBehaviour
                 brickObject.transform.position = position;
 
                 SpriteRenderer renderer = brickObject.AddComponent<SpriteRenderer>();
+                renderer.material = new Material(Shader.Find("Sprites/Default"));
+
                 if (brickSprites.Count > 0)
                 {
                     renderer.sprite = brickSprites[(r + c) % brickSprites.Count];
@@ -439,8 +441,7 @@ public class LevelSceneController : MonoBehaviour
             renderer = wall.AddComponent<SpriteRenderer>();
         }
 
-        renderer.sprite = GetWhiteSprite();
-        renderer.color = new Color(0.2f, 0.2f, 0.35f, 0.25f);
+        renderer.enabled = false;
 
         WallBounce wallBounce = wall.GetComponent<WallBounce>();
         if (wallBounce == null)
@@ -451,7 +452,6 @@ public class LevelSceneController : MonoBehaviour
         wallBounce.minBounceSpeed = 5f;
         wallBounce.speedMultiplier = 1f;
     }
-
     private PhysicsMaterial2D GetBounceMaterial()
     {
         if (bounceMaterial != null)
